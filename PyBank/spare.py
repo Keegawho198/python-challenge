@@ -1,3 +1,7 @@
+#First attempt, kept this here as spare/backup - code for printing to console not working properly but can only print to text file.
+
+
+
 import pandas as pd
 
 import sys
