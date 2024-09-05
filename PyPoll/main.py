@@ -27,21 +27,36 @@ candidate_votes = data['Candidate'].value_counts()
 candidate_percentages = (candidate_votes / total_votes) * 100
 
 
+# Find the candidate with the most votes
+winner = candidate_votes.idxmax()  # Get the index (candidate name) with the maximum value
+
+
 
 #Outputs
-
 print("")
-
 print(f"Total Votes: {total_votes}")
 print("")
 
 
+# Display the total votes and percentage of votes each candidate won
+for candidate, votes in candidate_votes.items():
+    percentage = candidate_percentages[candidate]
+    print(f"{candidate}: {percentage:.2f}% {votes} votes")
+    print("")
+
+print(f"{winner}")
+
+print(f"The winner is: {winner} with {candidate_votes[winner]} votes")
+
+
+#Spare testing
+
 # Print the list of candidates using loop to only use one of each candidate
 #using loop because candidates are in a array because of unique()
-print("List of candidates who received votes:")
-for candidate in candidates:
-    print("")
-    print(candidate)
+#print("List of candidates who received votes:")
+#for candidate in candidates:
+    #print("")
+    # print(candidate)
     
     #print(candidates)
 
@@ -51,10 +66,3 @@ for candidate in candidates:
 # Display the percentage of votes each candidate won
 #for candidate, percentage in candidate_percentages.items():
  #   print(f"{candidate}: {percentage:.3f}%")
-
-
-# Display the total votes and percentage of votes each candidate won
-for candidate, votes in candidate_votes.items():
-    percentage = candidate_percentages[candidate]
-    print(f"{candidate}: {percentage:.2f}% {votes} votes")
-    print("")
