@@ -1,4 +1,5 @@
 import pandas as pd
+
 import sys
 import os
 
@@ -7,16 +8,12 @@ if not os.path.exists('Analysis'):
     os.makedirs('Analysis')
 
 # Define the path to the output file
-output_file = 'Analysis/Results.txt'
+output_file = 'analysis/testText.txt'
 
-# Open the file in write mode
-file = open(output_file, 'w')
+# Redirect the standard output to the file, write into this text doc
+sys.stdout = open(output_file, 'w')
 
 
-# Function to print to both the console and the file
-def print_both(message):
-    print(message)  # Print to console
-    file.write(message + '\n')  # Writes to file
 
 
 # Load the dataset
@@ -40,41 +37,57 @@ average_change = data['Profit/Losses Change'].mean()
 max_increase_row = data.loc[data['Profit/Losses Change'] == data['Profit/Losses Change'].max()]
 
 # Extract the date and amount of the biggest increase in profits
-#.values[0] returns the first value back from arraybiggest_increase_date = max_increase_row['Date'].values[0]
+#.values[0] returns the first value back from array
 biggest_increase_date = max_increase_row['Date'].values[0]
 biggest_increase_amount = max_increase_row['Profit/Losses Change'].values[0]
 
 # Find the row with the lowest decrease in profits
 min_decrease_row = data.loc[data['Profit/Losses Change'] == data['Profit/Losses Change'].min()]
 
-# Extract the date and amount of the lowest decrease in profits
+# Extract the date and amount of the biggest increase in profits
 #.values[0] returns the first value back from array
 lowest_decrease_date = min_decrease_row['Date'].values[0]
 lowest_decrease_amount = min_decrease_row['Profit/Losses Change'].values[0]
 
+
 # Outputs
-print_both("")
-print_both("Financial Analysis")
-print_both("")
+print("")
+print("Financial Analysis")
+print("")
 
-print_both("-------------------------------")
-print_both("")
+print("-------------------------------")
+print("")
 
-print_both(f"Total months: {total_months}")
-print_both("")
+print("Total months:", total_months)
+print("")
 
-print_both(f"Net Total: ${net_total}")
-print_both("")
+print("Net Total: $", net_total)
+print("")
 
-print_both(f"Average Change: ${average_change:.2f}")
-print_both("")
+print("Average Change: $", average_change)
+print("")
 
-print_both(f"Greatest Increase in Profits: {biggest_increase_date} ${biggest_increase_amount:.2f}")
-print_both("")
 
-print_both(f"Greatest Decrease in Profits: {lowest_decrease_date} ${lowest_decrease_amount:.2f}")
-print_both("")
+#print("Greatest Increase in Profits")
+#print("Date:", biggest_increase_date)
+#print("Amount: $", biggest_increase_amount)
+print(f"Greatest Increase in Profits: {biggest_increase_date} ${biggest_increase_amount:.2f}")
+print("")
+
+
+
+#print("Lowest Decrease in Profits")
+#print("Date:", lowest_decrease_date)
+#print("Amount: $", lowest_decrease_amount)
+print(f"Greatest Decrease in Profits: {lowest_decrease_date} ${lowest_decrease_amount:.2f}")
+print("")
+
+
+#print(data['Profit/Losses Change'])
 
 
 # Close the file after writing
-file.close()
+sys.stdout.close()
+
+# Reset the standard output to the console
+sys.stdout = sys.__stdout__
