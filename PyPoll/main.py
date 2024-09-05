@@ -19,7 +19,8 @@ total_votes = len(data['Ballot ID'])
 candidates = data['Candidate'].unique()
 
 # Group the data by candidate and count the number of votes each candidate received
-#.value_counts counts each unique value happens to be there
+#.value_counts counts each unique value happens to be there, and getting candidate value from 
+#data['Candidate'] from excel file.
 candidate_votes = data['Candidate'].value_counts()
 
 
@@ -28,7 +29,7 @@ candidate_percentages = (candidate_votes / total_votes) * 100
 
 
 # Find the candidate with the most votes
-winner = candidate_votes.idxmax()  # Get the index (candidate name) with the maximum value
+winner = candidate_votes.idxmax()  # Get the index (candidate name) String value, with the maximum value
 
 
 
@@ -44,9 +45,8 @@ for candidate, votes in candidate_votes.items():
     print(f"{candidate}: {percentage:.2f}% {votes} votes")
     print("")
 
-print(f"{winner}")
+print(f"Winner: {winner}")
 
-print(f"The winner is: {winner} with {candidate_votes[winner]} votes")
 
 
 #Spare testing
