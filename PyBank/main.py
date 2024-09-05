@@ -1,3 +1,4 @@
+#PyBank
 import pandas as pd
 import sys
 import os
@@ -13,7 +14,7 @@ output_file = 'Analysis/Results.txt'
 file = open(output_file, 'w')
 
 
-# Function to print to both the console and the file
+# Function!!! to print to both the console and the file
 def print_both(message):
     print(message)  # Print to console
     file.write(message + '\n')  # Writes to file
@@ -53,6 +54,7 @@ lowest_decrease_date = min_decrease_row['Date'].values[0]
 lowest_decrease_amount = min_decrease_row['Profit/Losses Change'].values[0]
 
 # Outputs
+#calling function to print both to console and text file
 print_both("")
 print_both("Financial Analysis")
 print_both("")
