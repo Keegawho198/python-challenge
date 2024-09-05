@@ -17,7 +17,7 @@ file = open(output_file, 'w')
 # Function!!! to print to both the console and the file
 def print_both(message):
     print(message)  # Print to console
-    file.write(message + '\n')  # Writes to file
+    file.write(message + '\n')  # Writes to file, \n makes sure each line is on a new line.
 
 
 # Load the dataset
