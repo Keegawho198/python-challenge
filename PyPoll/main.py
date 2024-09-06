@@ -4,6 +4,21 @@ import pandas as pd
 import sys
 import os
 
+# Create the 'Analysis' folder if it doesn't exist
+if not os.path.exists('Analysis'):
+    os.makedirs('Analysis')
+
+# Define the path to the output file
+output_file = 'Analysis/Results.txt'
+
+# Open the file in write mode
+file = open(output_file, 'w')
+
+# Function!!! to print to both the console and the file
+def print_both(message):
+    print(message)  # Print to console
+    file.write(message + '\n')  # Writes to file, \n makes sure each line is on a new line.
+
 
 
 # Load the dataset
@@ -34,18 +49,20 @@ winner = candidate_votes.idxmax()  # Get the index (candidate name) String value
 
 
 #Outputs
-print("")
-print(f"Total Votes: {total_votes}")
-print("")
+print_both("Election Results")
+
+print_both("")
+print_both(f"Total Votes: {total_votes}")
+print_both("")
 
 
 # Display the total votes and percentage of votes each candidate won
 for candidate, votes in candidate_votes.items():
     percentage = candidate_percentages[candidate]
-    print(f"{candidate}: {percentage:.2f}% {votes} votes")
-    print("")
+    print_both(f"{candidate}: {percentage:.2f}% {votes} votes")
+    print_both("")
 
-print(f"Winner: {winner}")
+print_both(f"Winner: {winner}")
 
 
 
